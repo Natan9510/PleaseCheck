@@ -1,0 +1,50 @@
+public class LearningGroup {
+
+    public static void main(String[] args) {
+        
+        ClassInSchool[] cs = new ClassInSchool[11];
+        
+        fillArray(cs);
+        displayArray(cs);
+    }
+    
+    public static void fillArray(ClassInSchool[] cs){
+        for (int i = 0; i < cs.length; i++){
+            cs[i] = new ClassInSchool();
+        }    
+    }  
+    
+    public static void displayArray(ClassInSchool[] cs){
+        for (int i = 0; i < cs.length; i++){
+            System.out.println("paralel= " + cs[i].paralel + " klass= " + cs[i].klass 
+            + " specialisation= " + cs[i].specialisation + " countOfBoys= " + cs[i].countOfBoys 
+            + " countOfGirls= " + cs[i].countOfGirls + " averageMarkInYear= " + cs[i].averageMarkInYear);
+        }    
+    }  
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+public class LearningGroup {
+
+    public static void main(String[] args) {
+        
+        ClassInSchool[] cs = new ClassInSchool[11];
+        
+        fillArray(cs);
+        displayArray(cs);
+    }
+    
+    public static void fillArray(ClassInSchool[] cs){
+        for (int i = 0; i < cs.length; i++){
+            cs[i] = new ClassInSchool();
+        }    
+    }  
+    
+    public static void displayArray(ClassInSchool[] cs){
+        for (int i = 0; i < cs.length; i++){
+            System.out.println("paralel= " + cs[i].paralel + " klass= " + cs[i].klass 
+            + " specialisation= " + cs[i].specialisation + " countOfBoys= " + cs[i].countOfBoys 
+            + " countOfGirls= " + cs[i].countOfGirls + " averageMarkInYear= " + cs[i].averageMarkInYear);
+        }    
+    }  
+}
