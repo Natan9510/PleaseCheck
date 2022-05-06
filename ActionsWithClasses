@@ -1,0 +1,125 @@
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+
+public class ClassInSchool {
+    public int paralel = 1+ (int)(10*Math.random()); //паралель
+    
+    String alphabet = "abc"; 
+    Random r = new Random();
+    char klass = alphabet.charAt(r.nextInt(alphabet.length()));//класс
+    
+    String[] arr = {"Music", "Matematika", "Informatika", "null"};
+    int randIdx = ThreadLocalRandom.current().nextInt(arr.length);
+    String specialisation = arr[randIdx];
+    
+    int countOfBoys = 0+(int)(15*Math.random());//количество мальчиков
+    int countOfGirls = 0+(int)(15*Math.random());// количество девочек
+    double averageMarkInYear = 12*(double)(Math.random());//среднегодовая оценка в классе
+    
+    
+}
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.ArrayList;
+
+public class LearningGroup {
+
+    public static void main(String[] args) {
+                                        
+        ArrayList<ClassInSchool> cs = new ArrayList<>();
+        ArrayList<Integer> paralels = new ArrayList<>();
+        
+        fillArray(cs);
+        System.out.println("Array before cleaning: ");
+        displayArray(cs);
+        checkLetterOfKlass (cs);
+        //System.out.println("Array after cleaning: ");
+        //displayArray(cs);        
+        System.out.println("Array after sorting ");
+        bubbleSort(cs);
+        displayArray(cs); 
+        //maxKlassesInParalel(cs, paralels);
+        
+        /*Collections.sort(cs, new Comparator<ClassInSchool>(){
+            @Override
+            public int compare (ClassInSchool cs1, ClassInSchool cs2){
+                if (cs1.paralel > cs2.paralel)
+                    return 1;
+                if (cs1.paralel < cs2.paralel)
+                    return -1;
+                return 0;
+        }
+        });     */           
+    }
+    
+    public static void fillArray(ArrayList<ClassInSchool> cs){
+        for(int i = 0; i < 20; i++) {
+            cs.add(new ClassInSchool());
+        } 
+     }
+    
+    public static void displayArray(ArrayList<ClassInSchool> cs){
+        for(ClassInSchool classes: cs) {
+                System.out.println("paralel= " + classes.paralel + " klass= " + classes.klass 
+            + " specialisation= " + classes.specialisation + " countOfBoys= " + classes.countOfBoys 
+            + " countOfGirls= " + classes.countOfGirls + " averageMarkInYear= " + classes.averageMarkInYear);  
+        }  
+     }
+    
+    public static void bubbleSort(ArrayList<ClassInSchool> cs){
+        int out, in;
+        for (out = cs.size()-1; out > 1; out--){
+            for (in = 0; in < out; in++){
+                if (cs.get(in).paralel > cs.get(in+1).paralel){
+                    swap (cs, in, in+1);
+                }
+            }
+        }
+    }
+    
+    public static void swap (ArrayList<ClassInSchool> cs, int firstElement, int secondElement){
+        ClassInSchool temp = cs.get(firstElement);
+        //int temp1 = cs.get(secondElement).paralel;
+        cs.set(firstElement, cs.get(secondElement));
+        cs.set(secondElement, temp);
+    }
+    
+    public static void checkLetterOfKlass (ArrayList<ClassInSchool> cs){
+        for(int i = 0; i < cs.size(); i++) {
+            for (int j = 1; j < cs.size(); j++){
+                if (cs.get(i).paralel == cs.get(j).paralel){
+                    if (cs.get(i).klass == cs.get(j).klass){
+                        cs.remove(i);
+                    }
+                }
+            }    
+        }         
+    }
+    //в кількох парелелях може бути одинакова кількість класів
+    public static void maxKlassesInParalel (ArrayList<ClassInSchool> cs, ArrayList<Integer> paralels){
+        int maximumKlassInParalel = 0, countOfKlass = 0, maxParalel = 0;
+        for (int i = 1; i <= 11; i++){
+            for (int j = 0; j < cs.size(); j++){
+                if (i == cs.get(j).paralel){
+                    countOfKlass++;
+                }
+                if (countOfKlass > maximumKlassInParalel){
+                    maximumKlassInParalel = countOfKlass;
+                    maxParalel = i;                    
+                }                
+            }
+            paralels.add(maxParalel);
+            countOfKlass = 0;
+        }
+        System.out.print("paralels= " + paralels);
+        
+    }
+    
+    public static void findParalelWithMaxClasses(ArrayList<ClassInSchool> cs, int maximumKlassInParalel){
+        for (int i = 0; i <cs.size(); i++){
+            
+        }
+    }
+}
